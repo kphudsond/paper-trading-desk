@@ -1,0 +1,1378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Trading Desk">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#EDF0F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1418" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<title>Paper Trading Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a desk sheet. Summary strip on top, holdings and performance on the left, the agent console on the right.
+   One teal ink for actions; green and red appear only where money moves or a limit stops it. */
+:root {
+  --bg: #EDF0F3;
+  --surface: #FFFFFF;
+  --surface-2: #F5F7F9;
+  --ink: #15202A;
+  --muted: #586572;
+  --line: #D5DCE2;
+  --accent: #0D6670;
+  --accent-soft: #DCEDEE;
+  --on-accent: #FFFFFF;
+  --gain: #15764A;
+  --gain-soft: #E0F1E8;
+  --loss: #B0392D;
+  --loss-soft: #F8E3E0;
+  --warn: #8F5B00;
+  --warn-soft: #F7ECD6;
+  --focus: #2E78D2;
+  --f-ui: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --r: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1418; --surface: #151D23; --surface-2: #1A242B; --ink: #E5EAEE; --muted: #95A3AE; --line: #27333C;
+    --accent: #5BB8C1; --accent-soft: #163338; --on-accent: #062226;
+    --gain: #55C690; --gain-soft: #13301F; --loss: #F07C6E; --loss-soft: #3A1B17; --warn: #E2AA48; --warn-soft: #33270F;
+    --focus: #79B4F5; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1418; --surface: #151D23; --surface-2: #1A242B; --ink: #E5EAEE; --muted: #95A3AE; --line: #27333C;
+  --accent: #5BB8C1; --accent-soft: #163338; --on-accent: #062226;
+  --gain: #55C690; --gain-soft: #13301F; --loss: #F07C6E; --loss-soft: #3A1B17; --warn: #E2AA48; --warn-soft: #33270F;
+  --focus: #79B4F5; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.5 var(--f-ui);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface);
+}
+.num, .tick { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+.tick { font-weight: 600; letter-spacing: 0.02em; }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+/* Header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.top-in, .wrap {
+  max-width: 1240px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top-in { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-block: 10px; }
+.brand { display: flex; align-items: baseline; gap: 10px; margin-right: auto; min-width: 0; }
+.brand h1 { margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 3px 10px;
+  border-radius: 999px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+  border: 1px solid var(--line); background: var(--surface-2); color: var(--muted); white-space: nowrap;
+}
+.pill.mode-paper { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+.pill.mode-demo { color: var(--warn); background: var(--warn-soft); border-color: transparent; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+.market { font-size: 13px; color: var(--muted); }
+.market b { color: var(--ink); font-weight: 600; }
+.switch {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-weight: 600; font-size: 14px;
+}
+.switch.on { color: var(--gain); }
+.switch.off { color: var(--loss); background: var(--loss-soft); border-color: transparent; }
+.top-in.tabs { flex-wrap: nowrap; gap: 4px; padding-block: 0 8px; overflow-x: auto; }
+.tab {
+  min-height: 40px; padding: 6px 16px; border: 0; border-radius: 8px; background: transparent; color: var(--muted);
+  font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.tab[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); }
+
+/* Page */
+main.wrap { padding-block: 18px 40px; display: grid; gap: 18px; }
+.banner {
+  border-radius: var(--r); padding: 12px 14px; font-size: 14px; display: flex; gap: 10px; align-items: flex-start;
+  background: var(--warn-soft); color: var(--ink);
+}
+.banner.err { background: var(--loss-soft); }
+.banner b { color: var(--warn); }
+.banner.err b { color: var(--loss); }
+.summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.stat { background: var(--surface); padding: 12px 14px; min-width: 0; }
+.stat .k { font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.stat .v { font-family: var(--f-num); font-variant-numeric: tabular-nums; font-size: 21px; font-weight: 500; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stat .s { font-size: 12.5px; color: var(--muted); }
+.up { color: var(--gain); } .down { color: var(--loss); }
+
+.desk { display: flex; flex-direction: column; gap: 18px; }
+.desk-col { display: grid; gap: 18px; min-width: 0; align-content: start; }
+.desk-agent { order: -1; }
+@media (min-width: 960px) {
+  .desk { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: start; }
+  .desk-agent { order: 0; }
+}
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; min-width: 0; }
+.panel > h2, .sec h2 { margin: 0 0 4px; font-size: 16px; font-weight: 700; letter-spacing: -0.005em; text-wrap: balance; }
+.panel .sub, .sec .sub { margin: 0 0 12px; color: var(--muted); font-size: 13.5px; max-width: 64ch; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tscroll { overflow-x: auto; margin: 0 -4px; }
+th { text-align: left; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 6px 4px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 9px 4px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+th.r, td.r { text-align: right; }
+.fund-name { display: block; font-size: 12px; color: var(--muted); font-family: var(--f-ui); font-weight: 400; letter-spacing: 0; }
+.wbar { position: relative; height: 4px; background: var(--surface-2); border-radius: 2px; margin-top: 4px; min-width: 64px; }
+.wbar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 2px; }
+.wbar u { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); text-decoration: none; }
+.empty { color: var(--muted); font-size: 14px; padding: 8px 0; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 18px;
+  border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-weight: 600; cursor: pointer;
+  text-decoration: none;
+}
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn.big { min-height: 52px; font-size: 16px; width: 100%; }
+.btn.danger { color: var(--loss); }
+.btn.armed { background: var(--loss); color: #fff; border-color: var(--loss); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* Agent console */
+.caption { font-size: 13.5px; color: var(--muted); margin: 10px 0 0; }
+.steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; font-size: 13.5px; }
+.steps li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; color: var(--muted); }
+.steps li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); margin: 7px 0 0 5px; }
+.steps li.tool::before { background: var(--accent); }
+.steps li.block::before { background: var(--loss); }
+.steps li.note { color: var(--ink); font-style: italic; }
+.spin { width: 16px; height: 16px; border: 2px solid var(--accent-soft); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+.summary-text { margin: 14px 0 0; padding: 12px 14px; background: var(--surface-2); border-radius: 8px; font-size: 14.5px; white-space: pre-wrap; }
+.props { display: grid; gap: 10px; margin-top: 14px; }
+.prop { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 8px; }
+.prop.blocked { border-color: var(--loss); background: var(--loss-soft); }
+.prop-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.side { font-family: var(--f-num); font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 5px; letter-spacing: 0.04em; }
+.side.buy { background: var(--gain-soft); color: var(--gain); }
+.side.sell { background: var(--loss-soft); color: var(--loss); }
+.prop-title { font-family: var(--f-num); font-weight: 600; font-size: 16px; }
+.prop-est { color: var(--muted); font-size: 13px; }
+.status { margin-left: auto; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.status.filled, .status.sent, .status.approved { color: var(--gain); }
+.status.blocked, .status.failed { color: var(--loss); }
+.reason { margin: 0; font-size: 14px; }
+.fails { margin: 0; padding-left: 18px; color: var(--loss); font-size: 13.5px; }
+details.checks summary { cursor: pointer; font-size: 13px; color: var(--muted); }
+details.checks ul { margin: 6px 0 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
+.choice { display: flex; gap: 8px; }
+.choice .btn { min-height: 40px; padding: 6px 14px; flex: 1; }
+.choice .btn[aria-pressed="true"].yes { background: var(--gain); color: #fff; border-color: var(--gain); }
+.choice .btn[aria-pressed="true"].no { background: var(--surface-2); color: var(--muted); }
+.sendbar { margin-top: 14px; display: grid; gap: 8px; }
+
+/* Chart */
+.chart svg { width: 100%; height: auto; display: block; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .lbl { fill: var(--muted); font: 11px var(--f-num); }
+.chart .acct { stroke: var(--accent); fill: none; stroke-width: 2.25; }
+.chart .bench { stroke: var(--muted); fill: none; stroke-width: 1.5; stroke-dasharray: 4 3; }
+.chart .area { fill: var(--accent); opacity: 0.08; }
+.chart .endpt { fill: var(--accent); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); margin-top: 6px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 18px; height: 0; border-top: 2px solid var(--accent); }
+.legend i.b { border-top: 2px dashed var(--muted); }
+
+/* Forms */
+.sec { display: grid; gap: 12px; }
+.field { display: grid; gap: 4px; min-width: 0; align-content: start; }
+.field label { font-weight: 600; font-size: 14px; }
+.field .help { font-size: 13px; color: var(--muted); max-width: 64ch; }
+.field input[type=text], .field input[type=password], .field input[type=number], .field input[type=url], .field textarea {
+  width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2);
+}
+.field textarea { min-height: 280px; line-height: 1.55; resize: vertical; }
+.unit { display: flex; align-items: center; gap: 8px; }
+.unit span { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.grid2 { display: grid; gap: 14px 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.check { display: flex; gap: 12px; align-items: flex-start; min-height: 44px; cursor: pointer; }
+.check input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+.check b { display: block; font-weight: 600; }
+.check span { font-size: 13px; color: var(--muted); }
+.locked { margin: 0; padding-left: 18px; font-size: 14px; display: grid; gap: 4px; }
+.conn { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+.conn li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 6px; }
+.conn .ok { color: var(--gain); font-weight: 700; } .conn .bad { color: var(--loss); font-weight: 700; }
+
+/* Log */
+.runs { display: grid; gap: 10px; }
+details.run { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; }
+details.run > summary { cursor: pointer; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.run > summary::-webkit-details-marker { display: none; }
+details.run > summary .when { font-weight: 600; }
+details.run > summary .meta { color: var(--muted); font-size: 13px; }
+details.run[open] > summary { margin-bottom: 10px; }
+
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 20;
+  background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; max-width: calc(100% - 32px);
+}
+
+@media (max-width: 640px) {
+  .hide-sm { display: none; }
+  td:first-child { white-space: normal; }
+  th, td { padding-left: 2px; padding-right: 2px; }
+  .stat { padding: 10px 12px; }
+  .wbar { min-width: 44px; }
+  .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat .v { font-size: 18px; }
+  .brand h1 { font-size: 17px; }
+  .market { flex-basis: 100%; order: 3; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<!-- Core: data access, guardrails, planning and the agent loop. No page access here, so it can be tested on its own. -->
+<script id="core">
+(function (global) {
+"use strict";
+
+const DEFAULT_STRATEGY = `Example rule set: a trend filter across five asset classes. Edit it to suit you.
+
+1. Funds: SPY (US shares), EFA (developed-market shares outside the US), IEF (US 7-10 year Treasury bonds), VNQ (US property trusts), DBC (commodities).
+2. For each fund, compare its latest daily close with its 200-day simple moving average.
+3. Target an equal share of the account (20% each for five funds) in every fund closing above its 200-day average. Target 0% for any fund closing below it; that share stays in cash.
+4. Only trade a fund when its current weight is more than 5 percentage points away from its target.
+5. Sell before you buy. Whole shares only.
+6. If data for a fund is missing or looks wrong, skip that fund and say why. Never guess a price.`;
+
+const FUND_NAMES = {
+  SPY: "US shares", EFA: "Developed markets ex-US", IEF: "US Treasuries 7-10y", VNQ: "US property trusts", DBC: "Commodities",
+  QQQ: "US tech-heavy shares", TLT: "US Treasuries 20y+", GLD: "Gold", VEA: "Developed markets ex-US", VWO: "Emerging markets",
+  AGG: "US bonds", BND: "US bonds", VTI: "US total market", IWM: "US small caps", SHY: "US Treasuries 1-3y"
+};
+
+const DEFAULT_RULES = {
+  strategy: DEFAULT_STRATEGY,
+  universe: ["SPY", "EFA", "IEF", "VNQ", "DBC"],
+  benchmark: "SPY",
+  limits: {
+    maxPositionPct: 25,
+    maxOrderPct: 25,
+    maxOrderUsd: 30000,
+    maxOrdersPerDay: 10,
+    maxProposalsPerRun: 10,
+    cashReservePct: 2,
+    dailyLossHaltPct: 3,
+    requireMarketOpen: false
+  }
+};
+
+const LIMIT_INFO = [
+  { key: "maxPositionPct", label: "Largest single holding", unit: "% of account", min: 1, max: 100, step: 1,
+    help: "No buy may take one fund above this share of the account." },
+  { key: "maxOrderPct", label: "Largest single buy", unit: "% of account", min: 1, max: 100, step: 1,
+    help: "Caps each buy as a share of the account." },
+  { key: "maxOrderUsd", label: "Largest single buy", unit: "US$", min: 100, max: 1000000, step: 100,
+    help: "Caps each buy in dollars, whichever limit is lower." },
+  { key: "cashReservePct", label: "Cash kept aside", unit: "% of account", min: 0, max: 50, step: 0.5,
+    help: "Buys can't dip into this reserve." },
+  { key: "dailyLossHaltPct", label: "Stop buying after a daily drop of", unit: "%", min: 0.5, max: 50, step: 0.5,
+    help: "If the account is down this much since yesterday's close, buys are blocked. Sells still go through." },
+  { key: "maxOrdersPerDay", label: "Orders per day", unit: "orders", min: 1, max: 100, step: 1,
+    help: "Counts every order sent on the current New York trading day." },
+  { key: "maxProposalsPerRun", label: "Proposals per run", unit: "orders", min: 1, max: 50, step: 1,
+    help: "The agent can't propose more than this in one run." }
+];
+
+const FIXED_RULES = [
+  "Paper account only. This app has no way to reach a live account.",
+  "No borrowing: buys must be covered by cash.",
+  "No short selling: sells can't exceed shares held.",
+  "Market orders, valid for one trading day.",
+  "The agent only proposes. Code checks every order against the limits again just before it's sent."
+];
+
+/* ---------- small helpers ---------- */
+const num = (x) => { const n = Number(x); return Number.isFinite(n) ? n : NaN; };
+const round = (x, dp = 2) => Number.isFinite(x) ? Math.round(x * 10 ** dp) / 10 ** dp : null;
+const sum = (arr) => arr.reduce((a, b) => a + b, 0);
+const sleepReal = (ms) => new Promise((r) => setTimeout(r, ms));
+
+function usd(n, dp = 2) {
+  if (!Number.isFinite(n)) return "—";
+  const s = Math.abs(n).toLocaleString("en-AU", { minimumFractionDigits: dp, maximumFractionDigits: dp });
+  return (n < 0 ? "−US$" : "US$") + s;
+}
+function pct(n, dp = 1, signed = false) {
+  if (!Number.isFinite(n)) return "—";
+  const s = Math.abs(n).toFixed(dp) + "%";
+  if (n < 0) return "−" + s;
+  return (signed && n > 0 ? "+" : "") + s;
+}
+
+function nyDate(d = new Date()) {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+}
+function nyMidnightISO(d = new Date()) {
+  const date = nyDate(d);
+  let sign = "-", hh = "05", mm = "00";
+  try {
+    const part = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", timeZoneName: "shortOffset" })
+      .formatToParts(d).find((p) => p.type === "timeZoneName");
+    const m = part && part.value.match(/GMT([+-])(\d{1,2})(?::(\d{2}))?/);
+    if (m) { sign = m[1]; hh = m[2].padStart(2, "0"); mm = m[3] || "00"; }
+  } catch (e) { /* keep EST default */ }
+  return `${date}T00:00:00${sign}${hh}:${mm}`;
+}
+
+class AppError extends Error {
+  constructor(service, status, message) { super(message); this.service = service; this.status = status; }
+}
+
+function explainError(e) {
+  if (!(e instanceof AppError)) return (e && e.message) || String(e);
+  const svc = { trading: "Alpaca's trading service", data: "Alpaca's market-data service", claude: "the Claude API" }[e.service] || e.service;
+  if (e.status === "network") {
+    return e.service === "data"
+      ? `This browser couldn't reach ${svc}. If the connection check shows this for market data only, set up the relay described in the setup notes and enter its address in Settings.`
+      : `This browser couldn't reach ${svc}. Check the internet connection, then run the connection check in Settings.`;
+  }
+  if (e.service === "claude") {
+    if (e.status === 401) return "The Claude API key was rejected. Paste it again in Settings.";
+    if (e.status === 404) return `The model name wasn't recognised (${e.message}). Check the model in Settings.`;
+    if (e.status === 429) return "The Claude API is rate-limiting this key. Wait a minute and run again.";
+    if (e.status === 529 || e.status === 503) return "The Claude API is busy right now. Try again in a few minutes.";
+    return `The Claude API returned an error (${e.status}): ${e.message}`;
+  }
+  if (e.status === 401 || e.status === 403) {
+    return `${svc} rejected the keys (${e.status}). Use the Key ID and Secret from your Alpaca paper account; live-account keys don't work here.`;
+  }
+  if (e.status === 422) return `${svc} refused the request: ${e.message}`;
+  if (e.status === 429) return `${svc} is rate-limiting requests. Wait a minute and try again.`;
+  return `${svc} returned an error (${e.status}): ${e.message}`;
+}
+
+/* ---------- indicators ---------- */
+function sma(closes, n) {
+  if (closes.length < n) return null;
+  return sum(closes.slice(-n)) / n;
+}
+function retOver(closes, k) {
+  if (closes.length <= k) return null;
+  const a = closes[closes.length - 1 - k], b = closes[closes.length - 1];
+  return a > 0 ? (b / a - 1) * 100 : null;
+}
+function indicators(bars, latest) {
+  const closes = (bars || []).map((b) => num(b.c)).filter((c) => c > 0);
+  const last = closes.length ? closes[closes.length - 1] : null;
+  const s200 = sma(closes, 200), s50 = sma(closes, 50);
+  return {
+    last_close: round(last, 4),
+    last_close_date: bars && bars.length ? String(bars[bars.length - 1].t).slice(0, 10) : null,
+    latest_trade_price: latest && latest.price ? round(latest.price, 4) : null,
+    sma_50: round(s50, 4),
+    sma_200: round(s200, 4),
+    pct_vs_sma_200: s200 && last ? round((last / s200 - 1) * 100, 2) : null,
+    return_1m_pct: round(retOver(closes, 21), 2),
+    return_3m_pct: round(retOver(closes, 63), 2),
+    return_12m_pct: round(retOver(closes, 252), 2),
+    bars_used: closes.length
+  };
+}
+
+/* ---------- guardrails (hard limits the model cannot change) ---------- */
+function posMap(positions) {
+  const m = {};
+  for (const p of positions || []) m[p.symbol] = p;
+  return m;
+}
+
+function checkOrder(order, c) {
+  const L = c.limits;
+  const checks = [];
+  const add = (id, pass, detail) => checks.push({ id, pass: !!pass, detail });
+  const sym = String(order.symbol || "").toUpperCase();
+  const side = order.side;
+  const qty = num(order.qty);
+  const price = num(c.price);
+  const priceOk = price > 0;
+  const value = priceOk && qty > 0 ? price * qty : NaN;
+  const equity = num(c.account.equity);
+  const cash = num(c.account.cash);
+  const lastEquity = num(c.account.lastEquity);
+  const pos = c.positions[sym] || { qty: 0, marketValue: 0 };
+  const queued = c.queued || [];
+  const qVal = (x) => num(x.qty) * num(x.price != null ? x.price : x.estPrice);
+
+  add("trading_on", c.tradingEnabled, c.tradingEnabled ? "Trading switch is on" : "Trading switch is off");
+  add("allowed", c.allowed.includes(sym), c.allowed.includes(sym) ? `${sym} is on your allowed list` : `${sym || "This symbol"} isn't on your allowed list`);
+  add("side", side === "buy" || side === "sell", side === "buy" || side === "sell" ? `Side is ${side}` : `Unknown side "${side}"`);
+  add("qty", Number.isInteger(qty) && qty > 0, Number.isInteger(qty) && qty > 0 ? `${qty} whole shares` : `Quantity must be a whole number above 0 (got ${order.qty})`);
+  if (L.requireMarketOpen) add("market_open", c.marketOpen, c.marketOpen ? "US market is open" : "US market is closed and your limits require it to be open");
+  add("price", priceOk, priceOk ? `App price ${usd(price)}` : "No live price from Alpaca for this fund");
+
+  if (side === "sell") {
+    const queuedSell = sum(queued.filter((x) => x.symbol === sym && x.side === "sell").map((x) => num(x.qty)));
+    const free = num(pos.qty) - queuedSell;
+    add("no_short", qty <= free,
+      `Holds ${num(pos.qty) || 0} shares${queuedSell ? `, ${queuedSell} already lined up to sell` : ""}; selling ${qty}`);
+  }
+  if (side === "buy") {
+    const proceeds = sum(queued.filter((x) => x.side === "sell").map(qVal));
+    const spend = sum(queued.filter((x) => x.side === "buy").map(qVal));
+    const reserve = equity * L.cashReservePct / 100;
+    const avail = cash + proceeds - spend - reserve;
+    add("cash", priceOk && value <= avail, `Costs about ${usd(value, 0)}; cash available after the ${L.cashReservePct}% reserve is ${usd(avail, 0)}`);
+    const cap = Math.min(equity * L.maxOrderPct / 100, L.maxOrderUsd);
+    add("order_size", priceOk && value <= cap, `Buy of ${usd(value, 0)} against a cap of ${usd(cap, 0)}`);
+    const symQueuedNet = sum(queued.filter((x) => x.symbol === sym).map((x) => (x.side === "buy" ? 1 : -1) * qVal(x)));
+    const afterPct = equity > 0 ? (num(pos.marketValue || 0) + symQueuedNet + value) / equity * 100 : NaN;
+    add("position_cap", priceOk && afterPct <= L.maxPositionPct, `${sym} would be ${pct(afterPct)} of the account (limit ${L.maxPositionPct}%)`);
+    const day = lastEquity > 0 ? (equity / lastEquity - 1) * 100 : 0;
+    add("daily_loss", day > -L.dailyLossHaltPct, `Account is ${pct(day, 2, true)} today (buys stop at −${L.dailyLossHaltPct}%)`);
+  }
+  const countAfter = num(c.ordersToday) + num(c.pendingCount || 0) + 1;
+  add("daily_count", countAfter <= L.maxOrdersPerDay, `This would be order ${countAfter} of ${L.maxOrdersPerDay} allowed today`);
+  return { ok: checks.every((x) => x.pass), checks };
+}
+
+/* ---------- rebalance arithmetic (so the model doesn't do sums) ---------- */
+function planRebalance({ targets, driftPct, equity, positions, prices, universe, reservePct }) {
+  const orders = [], notes = [];
+  const want = {};
+  for (const [k, v] of Object.entries(targets || {})) want[String(k).toUpperCase()] = num(v);
+  const scale = (100 - reservePct) / 100;
+  const syms = [...new Set([...universe, ...Object.keys(want)])];
+  const totalTarget = sum(universe.map((s) => (Number.isFinite(want[s]) ? want[s] : 0)));
+  if (totalTarget > 100.0001) notes.push(`Targets add up to ${round(totalTarget, 1)}%, more than 100%. Buys beyond available cash will be blocked.`);
+  for (const sym of syms) {
+    if (!universe.includes(sym)) { notes.push(`${sym} isn't on the allowed list, so it was ignored.`); continue; }
+    const t = Number.isFinite(want[sym]) ? want[sym] : 0;
+    if (!(sym in want)) notes.push(`${sym} had no target, so 0% was assumed.`);
+    const price = num(prices[sym]);
+    const pos = positions[sym] || { qty: 0, marketValue: 0 };
+    const curW = equity > 0 ? num(pos.marketValue || 0) / equity * 100 : 0;
+    if (!(price > 0)) { notes.push(`${sym}: no price available, so it was skipped.`); continue; }
+    if (Math.abs(curW - t) <= driftPct) {
+      notes.push(`${sym}: ${pct(curW)} now vs ${pct(t)} target, inside the ${driftPct}-point band. No trade.`);
+      continue;
+    }
+    const targetVal = t / 100 * equity * scale;
+    const delta = targetVal - num(pos.marketValue || 0);
+    let side, qty;
+    if (delta < 0) { side = "sell"; qty = t === 0 ? Math.floor(num(pos.qty)) : Math.min(Math.floor(num(pos.qty)), Math.floor(-delta / price)); }
+    else { side = "buy"; qty = Math.floor(delta / price); }
+    if (!(qty > 0)) { notes.push(`${sym}: the gap is smaller than one share. No trade.`); continue; }
+    orders.push({ symbol: sym, side, qty, est_price: round(price, 4), est_value: round(qty * price, 2),
+      current_weight_pct: round(curW, 2), target_weight_pct: t });
+  }
+  orders.sort((a, b) => (a.side === "sell" ? 0 : 1) - (b.side === "sell" ? 0 : 1));
+  if (reservePct > 0) notes.push(`Targets were applied to ${100 - reservePct}% of equity to keep the ${reservePct}% cash reserve.`);
+  return { orders, notes };
+}
+
+/* ---------- Alpaca paper client (REST) ---------- */
+function AlpacaBroker(cfg) {
+  const relay = (cfg.relay || "").trim().replace(/\/+$/, "");
+  const T = relay ? relay + "/trading" : "https://paper-api.alpaca.markets";
+  const D = relay ? relay + "/data" : "https://data.alpaca.markets";
+  const doFetch = cfg.fetch || ((...a) => global.fetch(...a));
+  async function req(base, path, opts = {}) {
+    const service = base === D ? "data" : "trading";
+    let r;
+    try {
+      const headers = { "APCA-API-KEY-ID": cfg.keyId, "APCA-API-SECRET-KEY": cfg.secret };
+      if (opts.body) headers["Content-Type"] = "application/json";
+      r = await doFetch(base + path, { method: opts.method || "GET", headers, body: opts.body ? JSON.stringify(opts.body) : undefined });
+    } catch (e) {
+      throw new AppError(service, "network", e.message);
+    }
+    const text = await r.text();
+    let j = null;
+    try { j = text ? JSON.parse(text) : null; } catch (e) { j = { message: text }; }
+    if (!r.ok) throw new AppError(service, r.status, (j && (j.message || j.msg)) || text || r.statusText);
+    return j;
+  }
+  return {
+    kind: "paper",
+    async account() {
+      const a = await req(T, "/v2/account");
+      return { equity: num(a.equity), cash: num(a.cash), lastEquity: num(a.last_equity), buyingPower: num(a.buying_power),
+        blocked: !!(a.trading_blocked || a.account_blocked), currency: a.currency || "USD" };
+    },
+    async positions() {
+      const p = await req(T, "/v2/positions");
+      return (p || []).map((x) => ({ symbol: x.symbol, qty: num(x.qty), marketValue: num(x.market_value),
+        avgEntry: num(x.avg_entry_price), price: num(x.current_price), plPct: num(x.unrealized_plpc) * 100, pl: num(x.unrealized_pl) }));
+    },
+    async clock() {
+      const c = await req(T, "/v2/clock");
+      return { isOpen: !!c.is_open, nextOpen: c.next_open, nextClose: c.next_close, now: c.timestamp };
+    },
+    async bars(symbols, days = 400) {
+      const start = new Date(Date.now() - days * 86400000).toISOString().slice(0, 10);
+      const out = {};
+      let token = null;
+      for (let page = 0; page < 20; page++) {
+        const q = `/v2/stocks/bars?symbols=${encodeURIComponent(symbols.join(","))}&timeframe=1Day&start=${start}&limit=10000&adjustment=all` +
+          (token ? `&page_token=${encodeURIComponent(token)}` : "");
+        const j = await req(D, q);
+        for (const [s, arr] of Object.entries((j && j.bars) || {})) out[s] = (out[s] || []).concat(arr.map((b) => ({ t: b.t, c: num(b.c) })));
+        token = j && j.next_page_token;
+        if (!token) break;
+      }
+      return out;
+    },
+    async latestPrices(symbols) {
+      const j = await req(D, `/v2/stocks/trades/latest?symbols=${encodeURIComponent(symbols.join(","))}&feed=iex`);
+      const out = {};
+      for (const [s, t] of Object.entries((j && j.trades) || {})) out[s] = { price: num(t.p), time: t.t };
+      return out;
+    },
+    async ordersToday() {
+      const j = await req(T, `/v2/orders?status=all&limit=500&after=${encodeURIComponent(nyMidnightISO())}`);
+      return (j || []).length;
+    },
+    async submit(o) {
+      const j = await req(T, "/v2/orders", { method: "POST", body: { symbol: o.symbol, qty: String(o.qty), side: o.side,
+        type: "market", time_in_force: "day", client_order_id: o.clientId } });
+      return { id: j.id, status: j.status };
+    },
+    async order(id) {
+      const j = await req(T, `/v2/orders/${encodeURIComponent(id)}`);
+      return { id: j.id, status: j.status, filledQty: num(j.filled_qty), filledPrice: j.filled_avg_price ? num(j.filled_avg_price) : null };
+    },
+    async history() {
+      const j = await req(T, "/v2/account/portfolio/history?period=3M&timeframe=1D");
+      return { timestamps: (j && j.timestamp) || [], equity: (j && j.equity) || [] };
+    }
+  };
+}
+
+/* ---------- demo broker: simulated prices and fills, nothing leaves the device ---------- */
+function mulberry32(a) {
+  return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+function SimBroker(seed = 11) {
+  const rnd = mulberry32(seed);
+  const specs = { SPY: [430, 0.0011], EFA: [70, 0.0008], IEF: [99, -0.0004], VNQ: [94, -0.0006], DBC: [21, 0.0009],
+    QQQ: [380, 0.0012], TLT: [92, -0.0005], GLD: [190, 0.0010], VEA: [46, 0.0007], VWO: [41, 0.0004], AGG: [97, -0.0001] };
+  const N = 300, series = {};
+  const days = [];
+  { const d = new Date(); d.setUTCHours(4, 0, 0, 0);
+    while (days.length < N) { const wd = d.getUTCDay(); if (wd !== 0 && wd !== 6) days.unshift(d.toISOString()); d.setUTCDate(d.getUTCDate() - 1); } }
+  function make(sym) {
+    const [p0, drift] = specs[sym] || [50 + Math.floor(rnd() * 100), 0.0003];
+    const ph = rnd() * 6;
+    series[sym] = days.map((t, i) => ({ t, c: round(p0 * (1 + drift * i) * (1 + 0.012 * Math.sin(i / 9 + ph) + 0.005 * (rnd() - 0.5)), 2) }));
+  }
+  const last = (sym) => { if (!series[sym]) make(sym); return series[sym][N - 1].c; };
+  const live = {};
+  const price = (sym) => { if (!(sym in live)) live[sym] = round(last(sym) * (1 + 0.002 * (rnd() - 0.4)), 2); return live[sym]; };
+  const startEquity = 100000;
+  const hold = { SPY: 0.12, EFA: 0.21, VNQ: 0.19, IEF: 0.03 };
+  const pos = {};
+  let cash = startEquity;
+  for (const [s, w] of Object.entries(hold)) { const q = Math.floor(startEquity * w / price(s)); pos[s] = { qty: q, avg: round(price(s) * (0.9 + rnd() * 0.14), 2) }; cash -= q * price(s); }
+  cash = round(cash, 2);
+  let orders = 0, n = 0;
+  const filled = {};
+  const equityNow = () => cash + sum(Object.entries(pos).map(([s, p]) => p.qty * price(s)));
+  return {
+    kind: "demo",
+    async account() { const e = equityNow(); return { equity: round(e, 2), cash, lastEquity: round(e * 1.0035, 2), buyingPower: cash, blocked: false, currency: "USD" }; },
+    async positions() {
+      return Object.entries(pos).filter(([, p]) => p.qty > 0).map(([s, p]) => ({ symbol: s, qty: p.qty, marketValue: round(p.qty * price(s), 2),
+        avgEntry: p.avg, price: price(s), pl: round(p.qty * (price(s) - p.avg), 2), plPct: (price(s) / p.avg - 1) * 100 }));
+    },
+    async clock() { const now = Date.now(); return { isOpen: true, nextOpen: new Date(now + 19 * 3600e3).toISOString(), nextClose: new Date(now + 2.5 * 3600e3).toISOString(), now: new Date(now).toISOString() }; },
+    async bars(symbols) { const out = {}; for (const s of symbols) { last(s); out[s] = series[s].slice(); } return out; },
+    async latestPrices(symbols) { const out = {}; for (const s of symbols) out[s] = { price: price(s), time: new Date().toISOString() }; return out; },
+    async ordersToday() { return orders; },
+    async submit(o) {
+      const p = price(o.symbol); const id = "demo-" + (++n);
+      if (o.side === "buy") { cash = round(cash - o.qty * p, 2); const cur = pos[o.symbol] || { qty: 0, avg: p };
+        cur.avg = round((cur.avg * cur.qty + p * o.qty) / (cur.qty + o.qty), 2); cur.qty += o.qty; pos[o.symbol] = cur; }
+      else { cash = round(cash + o.qty * p, 2); pos[o.symbol].qty -= o.qty; }
+      orders++; filled[id] = p;
+      return { id, status: "filled" };
+    },
+    async order(id) { return { id, status: "filled", filledQty: null, filledPrice: filled[id] || null }; },
+    async history() {
+      const pts = days.slice(-63); const spy = series.SPY ? series.SPY.slice(-63) : (last("SPY"), series.SPY.slice(-63));
+      const e = equityNow();
+      return { timestamps: pts.map((t) => Math.floor(Date.parse(t) / 1000)),
+        equity: spy.map((b, i) => round(e * (1 - 0.045 * (62 - i) / 62) * (1 + 0.006 * Math.sin(i / 5)), 2)) };
+    }
+  };
+}
+
+/* ---------- agent: tools and loop ---------- */
+const TOOLS = [
+  { name: "get_account", description: "Account snapshot the app took at the start of this run: equity, cash, change since yesterday's close, US market status, and orders already sent today. Amounts are US dollars.",
+    input_schema: { type: "object", properties: {} } },
+  { name: "get_positions", description: "Current holdings: shares, market value, weight as a percentage of equity, and unrealised gain or loss.",
+    input_schema: { type: "object", properties: {} } },
+  { name: "get_market_data", description: "Daily indicators the app computed from about 400 calendar days of split- and dividend-adjusted daily bars: last close and its date, latest trade price, 50- and 200-day simple moving averages, last close versus the 200-day average in percent, and 1-, 3- and 12-month returns. Only funds on the allowed list or the benchmark are available.",
+    input_schema: { type: "object", properties: { symbols: { type: "array", items: { type: "string" } } }, required: ["symbols"] } },
+  { name: "plan_rebalance", description: "Turns target weights into whole-share orders using the app's own arithmetic and prices. Give a target weight (percent of equity) for every allowed fund, including 0 for funds to hold none of. The app sets aside the cash reserve, skips funds inside the drift band, and lists sells first. It does not propose or place anything.",
+    input_schema: { type: "object", properties: {
+      targets: { type: "object", additionalProperties: { type: "number" }, description: "Symbol to target weight percent, for example {\"SPY\": 20, \"IEF\": 0}" },
+      drift_threshold_pct: { type: "number", description: "Skip funds whose current weight is within this many percentage points of target" } },
+      required: ["targets", "drift_threshold_pct"] } },
+  { name: "propose_order", description: "Put one market order in front of the user for approval. The app first checks it against hard limits (allowed funds, no short selling, no borrowing, size caps, daily limits) using its own prices. A blocked order stays blocked for this run.",
+    input_schema: { type: "object", properties: {
+      symbol: { type: "string" }, side: { type: "string", enum: ["buy", "sell"] }, qty: { type: "integer", minimum: 1 },
+      reason: { type: "string", description: "One sentence citing the rule and the numbers behind it" } },
+      required: ["symbol", "side", "qty", "reason"] } }
+];
+
+const SYSTEM_PROMPT = `You are the execution agent for a paper-trading account (simulated money). You apply the user's written rules exactly, using only the tools provided.
+
+How this works:
+- The app took a snapshot of the account, holdings and prices at the start of this run. Read it through the tools. Never invent or estimate a price.
+- You cannot place orders. propose_order puts an order in front of the user after code checks it against hard limits. If a proposal is blocked, do not resize or re-propose it to get around the limit; report it.
+- Use plan_rebalance for order quantities instead of doing the arithmetic yourself.
+
+Steps: read the account and holdings, get market data for the allowed funds, decide each fund's target weight under the rules, call plan_rebalance, then propose the orders it returns that the rules support. Finish with a plain-English summary of four sentences or fewer: what you proposed and why, what you left alone, and anything blocked or missing.`;
+
+function buildBrief(run, rules) {
+  return `Date in New York: ${nyDate()}. US market: ${run.ctx.clock.isOpen ? "open" : "closed (orders would wait for the next open)"}.
+Allowed funds: ${rules.universe.join(", ")}. Benchmark: ${rules.benchmark}.
+
+The user's rules:
+<rules>
+${rules.strategy}
+</rules>
+
+Apply the rules now.`;
+}
+
+// Load the snapshot the guardrails rely on. The model never supplies prices or balances.
+async function loadSnapshot(broker, rules) {
+  const syms = [...new Set([...rules.universe, rules.benchmark])];
+  const [account, positions, clock, ordersToday, latest] = await Promise.all([
+    broker.account(), broker.positions(), broker.clock(), broker.ordersToday(), broker.latestPrices(rules.universe)
+  ]);
+  return { account, positions, posMap: posMap(positions), clock, ordersToday, latest, syms, bars: null };
+}
+
+function proposalPrice(ctx, sym) {
+  const l = ctx.latest[sym];
+  if (l && l.price > 0) return l.price;
+  const b = ctx.bars && ctx.bars[sym];
+  return b && b.length ? b[b.length - 1].c : NaN;
+}
+
+async function executeTool(name, input, run, env) {
+  const { broker, rules, settings } = env;
+  const ctx = run.ctx;
+  const L = rules.limits;
+  input = input || {};
+  switch (name) {
+    case "get_account": {
+      const a = ctx.account;
+      return { equity: a.equity, cash: a.cash, previous_close_equity: a.lastEquity,
+        change_today_pct: a.lastEquity > 0 ? round((a.equity / a.lastEquity - 1) * 100, 2) : null,
+        market_open: ctx.clock.isOpen, next_open: ctx.clock.nextOpen, next_close: ctx.clock.nextClose,
+        orders_sent_today: ctx.ordersToday, account_blocked: a.blocked };
+    }
+    case "get_positions": {
+      const eq = ctx.account.equity;
+      return ctx.positions.map((p) => ({ symbol: p.symbol, shares: p.qty, market_value: round(p.marketValue, 2),
+        weight_pct: eq > 0 ? round(p.marketValue / eq * 100, 2) : null, avg_entry_price: round(p.avgEntry, 4),
+        unrealized_pl_pct: round(p.plPct, 2), on_allowed_list: rules.universe.includes(p.symbol) }));
+    }
+    case "get_market_data": {
+      const asked = [...new Set((input.symbols || []).map((s) => String(s).toUpperCase()))];
+      const ok = asked.filter((s) => ctx.syms.includes(s));
+      const refused = asked.filter((s) => !ctx.syms.includes(s));
+      if (!ctx.bars) ctx.bars = await broker.bars(ctx.syms, 400);
+      const data = {};
+      for (const s of ok) {
+        const bars = ctx.bars[s];
+        data[s] = bars && bars.length ? indicators(bars, ctx.latest[s]) : { error: "No daily bars returned for this fund" };
+      }
+      return refused.length ? { data, refused: refused.map((s) => `${s} is not on the allowed list or the benchmark`) } : { data };
+    }
+    case "plan_rebalance": {
+      const prices = {};
+      for (const s of rules.universe) prices[s] = proposalPrice(ctx, s);
+      const drift = Number.isFinite(num(input.drift_threshold_pct)) ? Math.max(0, num(input.drift_threshold_pct)) : 5;
+      const plan = planRebalance({ targets: input.targets, driftPct: drift, equity: ctx.account.equity, positions: ctx.posMap,
+        prices, universe: rules.universe, reservePct: L.cashReservePct });
+      run.targets = {};
+      for (const s of rules.universe) run.targets[s] = Number.isFinite(num((input.targets || {})[s])) ? num(input.targets[s]) : 0;
+      return plan;
+    }
+    case "propose_order": {
+      const sym = String(input.symbol || "").toUpperCase();
+      const q = Number(input.qty);
+      const p = { id: run.proposals.length + 1, symbol: sym, side: input.side, qty: Number.isFinite(q) ? q : input.qty,
+        reason: String(input.reason || "").slice(0, 500), estPrice: proposalPrice(ctx, sym), checks: [], status: "queued" };
+      if (run.proposals.length >= L.maxProposalsPerRun) {
+        p.status = "blocked";
+        p.checks = [{ id: "run_count", pass: false, detail: `Limit of ${L.maxProposalsPerRun} proposals per run reached` }];
+      } else {
+        const queued = run.proposals.filter((x) => x.status === "queued");
+        const v = checkOrder(p, { limits: L, allowed: rules.universe, account: ctx.account, positions: ctx.posMap, price: p.estPrice,
+          ordersToday: ctx.ordersToday, pendingCount: queued.length, queued, marketOpen: ctx.clock.isOpen, tradingEnabled: settings.tradingEnabled });
+        p.checks = v.checks;
+        p.status = v.ok ? "queued" : "blocked";
+      }
+      run.proposals.push(p);
+      const failed = p.checks.filter((c) => !c.pass).map((c) => c.detail);
+      return p.status === "queued"
+        ? { status: "queued", message: "Passed all checks. Waiting for the user's approval." }
+        : { status: "blocked", failed_checks: failed, message: "Blocked by a hard limit. Do not try to work around it; mention it in your summary." };
+    }
+    default:
+      throw new Error(`Unknown tool ${name}`);
+  }
+}
+
+function describeCall(name, input, result) {
+  const i = input || {};
+  switch (name) {
+    case "get_account": return "Read the account balance";
+    case "get_positions": return "Read current holdings";
+    case "get_market_data": return `Pulled daily prices for ${(i.symbols || []).join(", ")}`;
+    case "plan_rebalance": {
+      const t = Object.entries(i.targets || {}).map(([k, v]) => `${k} ${v}%`).join(", ");
+      const n = result && result.orders ? result.orders.length : 0;
+      return `Worked out orders for targets ${t}: ${n} order${n === 1 ? "" : "s"}`;
+    }
+    case "propose_order": {
+      const head = `Proposed ${String(i.side || "").toUpperCase()} ${i.qty} ${String(i.symbol || "").toUpperCase()}`;
+      return result && result.status === "blocked" ? `${head}: blocked (${(result.failed_checks || []).join("; ")})` : head;
+    }
+    default: return name;
+  }
+}
+
+async function runClaudeAgent(run, env, hooks) {
+  const doFetch = env.fetch || ((...a) => global.fetch(...a));
+  const messages = [{ role: "user", content: buildBrief(run, env.rules) }];
+  for (let turn = 0; turn < 16; turn++) {
+    let r, j;
+    try {
+      r = await doFetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-api-key": env.settings.anthropicKey,
+          "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+        body: JSON.stringify({ model: env.settings.model, max_tokens: 2048, system: SYSTEM_PROMPT, tools: TOOLS, messages })
+      });
+    } catch (e) { throw new AppError("claude", "network", e.message); }
+    try { j = await r.json(); } catch (e) { j = null; }
+    if (!r.ok) throw new AppError("claude", r.status, (j && j.error && j.error.message) || `HTTP ${r.status}`);
+    if (j.usage) { run.usage.input += j.usage.input_tokens || 0; run.usage.output += j.usage.output_tokens || 0; }
+    messages.push({ role: "assistant", content: j.content });
+    const texts = j.content.filter((b) => b.type === "text").map((b) => b.text.trim()).filter(Boolean);
+    const uses = j.content.filter((b) => b.type === "tool_use");
+    if (!uses.length || j.stop_reason !== "tool_use") {
+      run.summary = texts.join("\n\n");
+      return;
+    }
+    for (const t of texts) hooks.step({ kind: "note", text: t });
+    const results = [];
+    for (const u of uses) {
+      let out, isErr = false;
+      try { out = await executeTool(u.name, u.input, run, env); }
+      catch (e) { out = { error: explainError(e) }; isErr = true; }
+      hooks.step({ kind: u.name === "propose_order" && out.status === "blocked" ? "block" : "tool", text: isErr ? `${u.name} failed: ${out.error}` : describeCall(u.name, u.input, out) });
+      results.push({ type: "tool_result", tool_use_id: u.id, content: JSON.stringify(out), ...(isErr ? { is_error: true } : {}) });
+    }
+    messages.push({ role: "user", content: results });
+  }
+  run.summary = "Stopped after 16 turns without finishing. Review the steps above.";
+}
+
+// Demo-only walk-through of the example rule, so the screens can be explored without a Claude key.
+async function runScriptedAgent(run, env, hooks) {
+  const call = async (name, input) => {
+    const out = await executeTool(name, input, run, env);
+    hooks.step({ kind: name === "propose_order" && out.status === "blocked" ? "block" : "tool", text: describeCall(name, input, out) });
+    return out;
+  };
+  const U = env.rules.universe;
+  await call("get_account", {});
+  await call("get_positions", {});
+  const md = (await call("get_market_data", { symbols: U })).data;
+  const each = round(100 / U.length, 2);
+  const targets = {};
+  for (const s of U) targets[s] = md[s] && md[s].pct_vs_sma_200 != null && md[s].pct_vs_sma_200 > 0 ? each : 0;
+  const plan = await call("plan_rebalance", { targets, drift_threshold_pct: 5 });
+  for (const o of plan.orders) {
+    const m = md[o.symbol];
+    await call("propose_order", { symbol: o.symbol, side: o.side, qty: o.qty,
+      reason: `${o.symbol} closed ${pct(Math.abs(m.pct_vs_sma_200), 1)} ${m.pct_vs_sma_200 > 0 ? "above" : "below"} its 200-day average, so its target is ${o.target_weight_pct}% (now ${o.current_weight_pct}%).` });
+  }
+  const above = U.filter((s) => targets[s] > 0), below = U.filter((s) => targets[s] === 0);
+  run.summary = `Scripted demo following the example rule, with no AI involved. Above their 200-day averages: ${above.join(", ") || "none"}. Below: ${below.join(", ") || "none"}. ` +
+    `${plan.orders.length} order${plan.orders.length === 1 ? "" : "s"} proposed; funds already within 5 points of target were left alone. Add a Claude API key in Settings to run the real agent.`;
+}
+
+async function sendApproved(run, env, hooks) {
+  const sleep = env.sleep || sleepReal;
+  const list = run.proposals.filter((p) => p.status === "approved")
+    .sort((a, b) => (a.side === "sell" ? 0 : 1) - (b.side === "sell" ? 0 : 1));
+  const pending = [];
+  for (const p of list) {
+    let account, positions, clock, ordersToday, latest;
+    try {
+      [account, positions, clock, ordersToday, latest] = await Promise.all([
+        env.broker.account(), env.broker.positions(), env.broker.clock(), env.broker.ordersToday(), env.broker.latestPrices([p.symbol])
+      ]);
+    } catch (e) { p.status = "failed"; p.error = explainError(e); hooks.update(); continue; }
+    const price = latest[p.symbol] ? latest[p.symbol].price : NaN;
+    const v = checkOrder(p, { limits: env.rules.limits, allowed: env.rules.universe, account, positions: posMap(positions), price,
+      ordersToday, pendingCount: 0, queued: pending, marketOpen: clock.isOpen, tradingEnabled: env.settings.tradingEnabled });
+    p.sendChecks = v.checks;
+    if (!v.ok) { p.status = "blocked"; p.blockedAtSend = true; hooks.update(); continue; }
+    try {
+      const o = await env.broker.submit({ symbol: p.symbol, side: p.side, qty: p.qty, clientId: `ptd-${run.id}-${p.id}` });
+      p.orderId = o.id; p.status = "sent"; p.sentAt = new Date().toISOString(); p.sendPrice = price;
+      hooks.update();
+      let filled = o.status === "filled";
+      if (!filled && clock.isOpen) {
+        for (let k = 0; k < 15 && !filled; k++) {
+          await sleep(1000);
+          const s = await env.broker.order(o.id);
+          if (s.status === "filled") { filled = true; p.fillPrice = s.filledPrice; }
+          else if (["canceled", "rejected", "expired"].includes(s.status)) { p.status = "failed"; p.error = `Alpaca reports the order ${s.status}`; break; }
+        }
+      }
+      if (filled) { p.status = "filled"; if (!p.fillPrice) { try { p.fillPrice = (await env.broker.order(o.id)).filledPrice; } catch (e) { /* not essential */ } } }
+      else if (p.status === "sent") pending.push({ symbol: p.symbol, side: p.side, qty: p.qty, price });
+    } catch (e) { p.status = "failed"; p.error = explainError(e); }
+    hooks.update();
+  }
+}
+
+global.Core = { DEFAULT_RULES, DEFAULT_STRATEGY, LIMIT_INFO, FIXED_RULES, FUND_NAMES, TOOLS, SYSTEM_PROMPT,
+  AppError, explainError, usd, pct, round, nyDate, nyMidnightISO, sma, indicators, checkOrder, planRebalance, posMap,
+  AlpacaBroker, SimBroker, loadSnapshot, executeTool, runClaudeAgent, runScriptedAgent, sendApproved, describeCall };
+})(typeof window !== "undefined" ? window : globalThis);
+</script>
+
+<!-- Interface -->
+<script id="ui">
+(function () {
+"use strict";
+const C = window.Core;
+const $app = document.getElementById("app");
+const KEY = { settings: "ptd.settings.v1", rules: "ptd.rules.v1", log: "ptd.log.v1" };
+
+function load(k, fallback) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fallback; } catch (e) { return fallback; } }
+function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+const DEFAULT_SETTINGS = { keyId: "", secret: "", anthropicKey: "", model: "claude-sonnet-5-5", relay: "", askBeforeSend: true, demo: false, tradingEnabled: true };
+const S = {
+  settings: Object.assign({}, DEFAULT_SETTINGS, load(KEY.settings, {})),
+  rules: (() => { const r = load(KEY.rules, null); if (!r) return clone(C.DEFAULT_RULES);
+    return Object.assign(clone(C.DEFAULT_RULES), r, { limits: Object.assign({}, C.DEFAULT_RULES.limits, r.limits || {}) }); })(),
+  log: load(KEY.log, []),
+  view: ["desk", "rules", "log", "settings"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "desk",
+  snap: null, perf: null, loading: false, error: null,
+  run: null, running: false, sending: false, conn: null, checking: false
+};
+let broker = null, brokerKey = "";
+
+const isDemo = () => S.settings.demo || !S.settings.keyId || !S.settings.secret;
+function getBroker() {
+  const k = isDemo() ? "demo" : `paper|${S.settings.keyId}|${S.settings.relay}`;
+  if (k !== brokerKey) { broker = isDemo() ? C.SimBroker() : C.AlpacaBroker({ keyId: S.settings.keyId, secret: S.settings.secret, relay: S.settings.relay }); brokerKey = k; }
+  return broker;
+}
+function env() { return { broker: getBroker(), rules: S.rules, settings: S.settings }; }
+
+function toast(msg) {
+  const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2600);
+}
+function fmtWhen(iso, withDate) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleString("en-AU", withDate ? { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" } : { weekday: "short", hour: "numeric", minute: "2-digit" });
+}
+function persistLog() {
+  if (S.log.length > 100) S.log.length = 100;
+  if (!save(KEY.log, S.log)) toast("Couldn't save the log on this device");
+}
+
+/* ---------- data refresh ---------- */
+async function refresh() {
+  S.loading = true; S.error = null; render();
+  const b = getBroker();
+  try {
+    const [account, positions, clock] = await Promise.all([b.account(), b.positions(), b.clock()]);
+    S.snap = { account, positions, clock, at: new Date().toISOString() };
+  } catch (e) { S.error = C.explainError(e); S.snap = null; }
+  S.loading = false; render();
+  if (S.snap) loadPerf(b);
+}
+async function loadPerf(b) {
+  try {
+    const h = await b.history();
+    const bars = (await b.bars([S.rules.benchmark], 130))[S.rules.benchmark] || [];
+    const byDate = {};
+    for (const x of bars) byDate[C.nyDate(new Date(x.t))] = x.c;
+    const pts = [];
+    let lastB = null;
+    for (let i = 0; i < h.timestamps.length; i++) {
+      const eq = h.equity[i];
+      const d = C.nyDate(new Date(h.timestamps[i] * 1000));
+      if (byDate[d] != null) lastB = byDate[d];
+      if (eq > 0 && lastB != null) pts.push({ d, eq, b: lastB });
+    }
+    S.perf = pts.length >= 2 ? pts : [];
+  } catch (e) { S.perf = { error: C.explainError(e) }; }
+  if (S.view === "desk") render();
+}
+
+/* ---------- agent run ---------- */
+async function runAgent() {
+  if (S.running) return;
+  const useClaude = !!S.settings.anthropicKey;
+  if (!useClaude && !isDemo()) return;
+  S.running = true;
+  const run = { id: Date.now().toString(36), startedAt: new Date().toISOString(), mode: isDemo() ? "demo" : "paper",
+    agent: useClaude ? "claude" : "scripted", model: useClaude ? S.settings.model : null,
+    steps: [], proposals: [], summary: "", usage: { input: 0, output: 0 }, error: null, targets: null };
+  S.run = run; render();
+  const hooks = { step: (s) => { run.steps.push({ kind: s.kind, text: String(s.text).slice(0, 600) }); render(); }, update: () => { persistRun(run); render(); } };
+  try {
+    run.ctx = await C.loadSnapshot(getBroker(), S.rules);
+    hooks.step({ kind: "tool", text: `Took a snapshot: equity ${C.usd(run.ctx.account.equity, 0)}, ${run.ctx.positions.length} holdings, market ${run.ctx.clock.isOpen ? "open" : "closed"}` });
+    if (useClaude) await C.runClaudeAgent(run, env(), hooks);
+    else await C.runScriptedAgent(run, env(), hooks);
+  } catch (e) { run.error = C.explainError(e); }
+  delete run.ctx;
+  run.finishedAt = new Date().toISOString();
+  S.running = false;
+  persistRun(run);
+  render();
+  const queued = run.proposals.filter((p) => p.status === "queued");
+  if (!run.error && queued.length && !S.settings.askBeforeSend) {
+    queued.forEach((p) => { p.status = "approved"; });
+    await sendNow();
+  }
+}
+function persistRun(run) {
+  const copy = clone(Object.assign({}, run, { ctx: undefined }));
+  const i = S.log.findIndex((r) => r.id === run.id);
+  if (i >= 0) S.log[i] = copy; else S.log.unshift(copy);
+  persistLog();
+}
+async function sendNow() {
+  if (!S.run || S.sending) return;
+  S.sending = true; render();
+  await C.sendApproved(S.run, env(), { update: () => { persistRun(S.run); render(); } });
+  S.sending = false;
+  persistRun(S.run);
+  const r = S.run.proposals;
+  const ok = r.filter((p) => p.status === "filled" || p.status === "sent").length;
+  toast(`${ok} order${ok === 1 ? "" : "s"} sent`);
+  refresh();
+}
+
+/* ---------- connection check ---------- */
+async function checkConnections() {
+  if (S.checking) return;
+  S.checking = true; S.conn = []; render();
+  const st = S.settings;
+  const add = (ok, label, detail) => { S.conn.push({ ok, label, detail }); render(); };
+  if (!st.keyId || !st.secret) add(false, "Alpaca", "Enter your paper Key ID and Secret first.");
+  else {
+    const b = C.AlpacaBroker({ keyId: st.keyId, secret: st.secret, relay: st.relay });
+    try { const a = await b.account(); add(true, "Alpaca trading", `Paper account reachable. Equity ${C.usd(a.equity, 0)}.`); }
+    catch (e) { add(false, "Alpaca trading", C.explainError(e)); }
+    try { const p = await b.latestPrices([S.rules.benchmark]); const x = p[S.rules.benchmark];
+      add(!!x, "Alpaca market data", x ? `${S.rules.benchmark} last traded at ${C.usd(x.price)}.` : "Connected, but no price came back."); }
+    catch (e) { add(false, "Alpaca market data", C.explainError(e)); }
+  }
+  if (!st.anthropicKey) add(false, "Claude", "No API key yet. Demo mode can still run the scripted walk-through.");
+  else {
+    try {
+      const r = await fetch("https://api.anthropic.com/v1/messages", { method: "POST",
+        headers: { "content-type": "application/json", "x-api-key": st.anthropicKey, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
+        body: JSON.stringify({ model: st.model, max_tokens: 8, messages: [{ role: "user", content: "Reply with OK." }] }) });
+      const j = await r.json().catch(() => null);
+      if (r.ok) add(true, "Claude", `Key works with ${st.model}.`);
+      else add(false, "Claude", C.explainError(new C.AppError("claude", r.status, (j && j.error && j.error.message) || r.statusText)));
+    } catch (e) { add(false, "Claude", C.explainError(new C.AppError("claude", "network", e.message))); }
+  }
+  S.checking = false; render();
+}
+
+/* ---------- views ---------- */
+function header() {
+  const demo = isDemo();
+  const clk = S.snap && S.snap.clock;
+  const market = clk ? (clk.isOpen ? `<b>US market open</b> · closes ${esc(fmtWhen(clk.nextClose))}` : `<b>US market closed</b> · opens ${esc(fmtWhen(clk.nextOpen))}`) : "";
+  const on = S.settings.tradingEnabled;
+  const tab = (id, label) => `<button class="tab" role="tab" id="tab-${id}" aria-selected="${S.view === id}" data-view="${id}">${label}</button>`;
+  return `<header class="top"><div class="top-in">
+    <div class="brand"><h1>Paper Trading Desk</h1>
+      <span class="pill ${demo ? "mode-demo" : "mode-paper"}"><span class="dot"></span>${demo ? "Demo data" : "Paper account"}</span></div>
+    <div class="market">${market}</div>
+    <button class="switch ${on ? "on" : "off"}" id="kill" aria-pressed="${on}" title="Stops every order when off">
+      <span class="dot"></span>${on ? "Trading on" : "Trading paused"}</button>
+  </div>
+  <div class="top-in tabs" role="tablist">${tab("desk", "Desk")}${tab("rules", "Rules &amp; limits")}${tab("log", "Log")}${tab("settings", "Settings")}</div>
+  </header>`;
+}
+
+function summaryStrip() {
+  if (!S.snap) return "";
+  const a = S.snap.account;
+  const day = a.lastEquity > 0 ? a.equity - a.lastEquity : NaN;
+  const dayPct = a.lastEquity > 0 ? (a.equity / a.lastEquity - 1) * 100 : NaN;
+  const invested = C.round((a.equity - a.cash) / a.equity * 100, 1);
+  let rel = `<div class="v">—</div><div class="s">Needs a few days of history</div>`;
+  if (Array.isArray(S.perf) && S.perf.length >= 2) {
+    const f = S.perf[0], l = S.perf[S.perf.length - 1];
+    const ra = (l.eq / f.eq - 1) * 100, rb = (l.b / f.b - 1) * 100;
+    rel = `<div class="v ${ra - rb >= 0 ? "up" : "down"}">${C.pct(ra - rb, 1, true)}</div><div class="s">You ${C.pct(ra, 1, true)}, ${esc(S.rules.benchmark)} ${C.pct(rb, 1, true)} over 3 months</div>`;
+  }
+  return `<section class="summary" aria-label="Account summary">
+    <div class="stat"><div class="k">Equity</div><div class="v">${C.usd(a.equity, 0)}</div><div class="s">${invested}% invested</div></div>
+    <div class="stat"><div class="k">Today</div><div class="v ${day >= 0 ? "up" : "down"}">${C.pct(dayPct, 2, true)}</div><div class="s">${C.usd(day, 0)} since yesterday's close</div></div>
+    <div class="stat"><div class="k">Cash</div><div class="v">${C.usd(a.cash, 0)}</div><div class="s">No borrowing allowed</div></div>
+    <div class="stat"><div class="k">Vs ${esc(S.rules.benchmark)}</div>${rel}</div>
+  </section>`;
+}
+
+function holdingsPanel() {
+  const a = S.snap.account;
+  const last = S.log.find((r) => r.targets && r.mode === (isDemo() ? "demo" : "paper"));
+  const targets = last ? last.targets : {};
+  const rows = S.snap.positions.slice().sort((x, y) => y.marketValue - x.marketValue);
+  const universeOnly = S.rules.universe.filter((s) => !rows.some((r) => r.symbol === s));
+  const tr = (p) => {
+    const w = a.equity > 0 ? p.marketValue / a.equity * 100 : 0;
+    const t = targets[p.symbol];
+    const scale = Math.max(S.rules.limits.maxPositionPct, 1);
+    return `<tr><td><span class="tick">${esc(p.symbol)}</span><span class="fund-name">${esc(C.FUND_NAMES[p.symbol] || "")}</span></td>
+      <td class="r num">${p.qty}</td><td class="r num">${C.usd(p.marketValue, 0)}</td>
+      <td class="r num hide-sm ${p.plPct >= 0 ? "up" : "down"}">${C.pct(p.plPct, 1, true)}</td>
+      <td class="r num">${C.pct(w)}<div class="wbar" aria-hidden="true"><i style="width:${Math.min(100, w / scale * 100)}%"></i>${t != null ? `<u style="left:${Math.min(100, t / scale * 100)}%"></u>` : ""}</div></td>
+      <td class="r num">${t != null ? C.pct(t, 0) : "—"}</td></tr>`;
+  };
+  const empty = (s) => `<tr><td><span class="tick">${esc(s)}</span><span class="fund-name">${esc(C.FUND_NAMES[s] || "")}</span></td><td class="r num">0</td><td class="r num">—</td><td class="r num hide-sm">—</td><td class="r num">0.0%</td><td class="r num">${targets[s] != null ? C.pct(targets[s], 0) : "—"}</td></tr>`;
+  return `<section class="panel area-hold" aria-labelledby="h-hold"><h2 id="h-hold">Holdings</h2>
+    <p class="sub">Weight is share of equity; the tick on each bar marks the target from the last run.</p>
+    <div class="tscroll"><table><thead><tr><th>Fund</th><th class="r">Shares</th><th class="r">Value</th><th class="r hide-sm">Gain</th><th class="r">Weight</th><th class="r">Target</th></tr></thead>
+    <tbody>${rows.map(tr).join("")}${universeOnly.map(empty).join("")}</tbody></table></div></section>`;
+}
+
+function perfPanel() {
+  let body;
+  if (S.perf == null) body = `<p class="empty">Loading history…</p>`;
+  else if (S.perf.error) body = `<p class="empty">${esc(S.perf.error)}</p>`;
+  else if (S.perf.length < 2) body = `<p class="empty">Not enough history yet. The chart fills in after a few trading days.</p>`;
+  else body = chart(S.perf);
+  return `<section class="panel area-perf chart" aria-labelledby="h-perf"><h2 id="h-perf">Three months against ${esc(S.rules.benchmark)}</h2>
+    <p class="sub">Return since the start of the window. Holding ${esc(S.rules.benchmark)} is the bar the agent has to clear after fees.</p>${body}</section>`;
+}
+
+function chart(pts) {
+  const narrow = window.innerWidth < 560;
+  const W = narrow ? 380 : 640, H = narrow ? 200 : 240, padL = 46, padR = 54, padT = 12, padB = 26;
+  const a = pts.map((p) => (p.eq / pts[0].eq - 1) * 100), b = pts.map((p) => (p.b / pts[0].b - 1) * 100);
+  let lo = Math.min(...a, ...b, 0), hi = Math.max(...a, ...b, 0);
+  const span = hi - lo || 1;
+  const step = [0.5, 1, 2, 2.5, 5, 10, 20, 25, 50].find((s) => span / s <= 5) || 100;
+  lo = Math.floor(lo / step) * step; hi = Math.ceil(hi / step) * step;
+  const x = (i) => padL + i * (W - padL - padR) / (pts.length - 1);
+  const y = (v) => padT + (hi - v) * (H - padT - padB) / (hi - lo);
+  const path = (arr) => arr.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  let grid = "";
+  for (let v = lo; v <= hi + 1e-9; v += step) {
+    grid += `<line class="grid" x1="${padL}" x2="${W - padR}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}"/><text class="lbl" x="${padL - 8}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end">${v > 0 ? "+" : ""}${C.round(v, 1)}%</text>`;
+  }
+  const fmtD = (d) => new Date(d + "T12:00:00Z").toLocaleDateString("en-AU", { day: "numeric", month: "short", timeZone: "UTC" });
+  const mid = Math.floor((pts.length - 1) / 2);
+  const xl = [0, mid, pts.length - 1].map((i) => `<text class="lbl" x="${x(i).toFixed(1)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === pts.length - 1 ? "end" : "middle"}">${fmtD(pts[i].d)}</text>`).join("");
+  const n = pts.length - 1;
+  const area = `${path(a)}L${x(n).toFixed(1)},${y(Math.max(lo, 0)).toFixed(1)}L${x(0).toFixed(1)},${y(Math.max(lo, 0)).toFixed(1)}Z`;
+  const ya = y(a[n]), yb = y(b[n]);
+  const sep = Math.abs(ya - yb) < 14 ? (ya < yb ? -7 : 7) : 0;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Account return ${C.pct(a[n], 1, true)} versus ${esc(S.rules.benchmark)} ${C.pct(b[n], 1, true)}">
+    ${grid}<path class="area" d="${area}"/><path class="bench" d="${path(b)}"/><path class="acct" d="${path(a)}"/>
+    <circle class="endpt" cx="${x(n).toFixed(1)}" cy="${ya.toFixed(1)}" r="3.5"/>
+    <text class="lbl" x="${W - padR + 6}" y="${(ya + 4 + sep).toFixed(1)}" style="fill:var(--accent);font-weight:600">${C.pct(a[n], 1, true)}</text>
+    <text class="lbl" x="${W - padR + 6}" y="${(yb + 4 - sep).toFixed(1)}">${C.pct(b[n], 1, true)}</text>${xl}</svg>
+    <div class="legend"><span><i></i>Your account</span><span><i class="b"></i>${esc(S.rules.benchmark)}, held throughout</span></div>`;
+}
+
+function proposalCard(p, interactive) {
+  const val = Number.isFinite(p.estPrice) ? `≈ ${C.usd(p.estPrice * p.qty, 0)} at ${C.usd(p.estPrice)}` : "";
+  const checks = p.sendChecks || p.checks || [];
+  const failed = checks.filter((c) => !c.pass);
+  const stale = !interactive && (p.status === "queued" || p.status === "approved");
+  const statusLabel = stale ? "Not sent" : { queued: "Needs approval", approved: "Approved", rejected: "Rejected", blocked: p.blockedAtSend ? "Blocked at send" : "Blocked",
+    sent: "Sent, waiting for fill", filled: p.fillPrice ? `Filled at ${C.usd(p.fillPrice)}` : "Filled", failed: "Failed" }[p.status] || p.status;
+  const canChoose = interactive && (p.status === "queued" || p.status === "approved" || p.status === "rejected");
+  return `<article class="prop ${p.status === "blocked" ? "blocked" : ""}">
+    <div class="prop-head"><span class="side ${p.side === "sell" ? "sell" : "buy"}">${esc(String(p.side).toUpperCase())}</span>
+      <span class="prop-title">${esc(p.qty)} ${esc(p.symbol)}</span><span class="prop-est num">${esc(val)}</span>
+      <span class="status ${esc(p.status)}">${esc(statusLabel)}</span></div>
+    <p class="reason">${esc(p.reason)}</p>
+    ${failed.length ? `<ul class="fails">${failed.map((c) => `<li>${esc(c.detail)}</li>`).join("")}</ul>` : ""}
+    ${p.error ? `<ul class="fails"><li>${esc(p.error)}</li></ul>` : ""}
+    ${!failed.length && checks.length ? `<details class="checks"><summary>All ${checks.length} limit checks passed</summary><ul>${checks.map((c) => `<li>${esc(c.detail)}</li>`).join("")}</ul></details>` : ""}
+    ${canChoose ? `<div class="choice" role="group" aria-label="Approve or reject">
+      <button class="btn yes" data-approve="${p.id}" aria-pressed="${p.status === "approved"}">Approve</button>
+      <button class="btn no" data-reject="${p.id}" aria-pressed="${p.status === "rejected"}">Reject</button></div>` : ""}
+  </article>`;
+}
+
+function agentPanel() {
+  const demo = isDemo(), hasKey = !!S.settings.anthropicKey;
+  const r = S.run;
+  let action;
+  if (!hasKey && !demo) action = `<button class="btn primary big" disabled>Run agent</button><p class="caption">Add a Claude API key in <a href="#settings" data-view="settings">Settings</a> to run the agent on your paper account.</p>`;
+  else action = `<button class="btn primary big" id="run" ${S.running || S.sending || !S.snap ? "disabled" : ""}>${S.running ? `<span class="spin" aria-hidden="true"></span>Agent working…` : hasKey ? "Run agent" : "Run demo walk-through"}</button>
+    <p class="caption">${hasKey ? "Claude reads your rules and the latest prices, then proposes orders. Code checks each one against your limits." : "Demo data with a scripted walk-through of the example rule. No AI is used until you add a Claude key."} ${S.settings.askBeforeSend ? "Nothing is sent until you approve it." : "Orders that pass the checks are sent straight away (you turned approval off in Settings)."}</p>`;
+  let body = "";
+  if (r) {
+    body += `<ol class="steps" aria-live="polite">${r.steps.map((s) => `<li class="${esc(s.kind)}">${esc(s.text)}</li>`).join("")}</ol>`;
+    if (r.error) body += `<div class="banner err" style="margin-top:14px"><b>Run stopped.</b><span>${esc(r.error)}</span></div>`;
+    if (r.summary) body += `<p class="summary-text">${esc(r.summary)}</p>`;
+    if (r.proposals.length) {
+      body += `<div class="props">${r.proposals.map((p) => proposalCard(p, !S.running && !S.sending)).join("")}</div>`;
+      const approved = r.proposals.filter((p) => p.status === "approved").length;
+      const queued = r.proposals.filter((p) => p.status === "queued").length;
+      if (!S.running && (approved || queued)) {
+        body += `<div class="sendbar">
+          ${queued ? `<button class="btn" id="approve-all" ${S.sending ? "disabled" : ""}>Approve all ${queued + approved}</button>` : ""}
+          <button class="btn primary big" id="send" ${!approved || S.sending ? "disabled" : ""}>${S.sending ? `<span class="spin" aria-hidden="true"></span>Sending…` : (approved ? `Send ${approved} approved order${approved === 1 ? "" : "s"}` : "Approve orders to send them")}</button>
+          <p class="caption">Sells go first. Each order is checked again against fresh prices and balances just before it's sent.</p></div>`;
+      }
+    } else if (!S.running && !r.error) body += `<p class="caption">No orders proposed this run.</p>`;
+    if (r.usage && (r.usage.input || r.usage.output)) body += `<p class="caption">Claude usage this run: ${r.usage.input.toLocaleString()} input and ${r.usage.output.toLocaleString()} output tokens.</p>`;
+  }
+  return `<section class="panel area-agent" aria-labelledby="h-agent"><h2 id="h-agent">Agent</h2>
+    <p class="sub">${hasKey ? `Model: ${esc(S.settings.model)}` : "Scripted demo"} · ${S.rules.universe.length} allowed funds · ${S.settings.tradingEnabled ? "trading on" : "trading paused, every order will be blocked"}</p>
+    ${action}${body}</section>`;
+}
+
+function deskView() {
+  const demo = isDemo();
+  let out = "";
+  if (demo) out += `<div class="banner"><b>Demo data.</b><span>Prices, holdings and fills here are simulated on this device. Add your Alpaca paper keys in <a href="#settings" data-view="settings">Settings</a> to use your paper account.</span></div>`;
+  if (S.error) out += `<div class="banner err"><b>Couldn't load the account.</b><span>${esc(S.error)}</span></div>`;
+  if (S.loading && !S.snap) return out + `<p class="empty">Loading account…</p>`;
+  if (!S.snap) return out;
+  out += summaryStrip();
+  out += `<div class="desk"><div class="desk-col">${holdingsPanel()}${perfPanel()}</div><div class="desk-col desk-agent">${agentPanel()}</div></div>`;
+  return out;
+}
+
+function rulesView() {
+  const r = S.rules, L = r.limits;
+  const lim = (i) => `<div class="field"><label for="lim-${i.key}">${esc(i.label)}</label>
+    <div class="unit"><input type="number" inputmode="decimal" id="lim-${i.key}" min="${i.min}" max="${i.max}" step="${i.step}" value="${esc(L[i.key])}"><span>${esc(i.unit)}</span></div>
+    <div class="help">${esc(i.help)}</div></div>`;
+  return `<section class="panel sec" aria-labelledby="h-strat"><h2 id="h-strat">Your rules</h2>
+      <p class="sub">Written in plain English. Claude follows these. Be specific about numbers, and say what to do when data is missing.</p>
+      <div class="field"><label for="strategy">Strategy</label><textarea id="strategy" spellcheck="true">${esc(r.strategy)}</textarea></div>
+      <div class="grid2">
+        <div class="field"><label for="universe">Funds the agent may trade</label><input type="text" id="universe" autocapitalize="characters" autocorrect="off" spellcheck="false" value="${esc(r.universe.join(", "))}"><div class="help">US-listed tickers, separated by commas. Anything else is blocked.</div></div>
+        <div class="field"><label for="benchmark">Benchmark</label><input type="text" id="benchmark" autocapitalize="characters" autocorrect="off" spellcheck="false" value="${esc(r.benchmark)}"><div class="help">What the agent's results are compared with.</div></div>
+      </div></section>
+    <section class="panel sec" aria-labelledby="h-lim"><h2 id="h-lim">Hard limits</h2>
+      <p class="sub">Enforced by code on this page, not by the AI. The agent can't change them, and every order is checked again just before sending.</p>
+      <div class="grid2">${C.LIMIT_INFO.map(lim).join("")}</div>
+      <label class="check" for="lim-requireMarketOpen"><input type="checkbox" id="lim-requireMarketOpen" ${L.requireMarketOpen ? "checked" : ""}>
+        <span><b>Only send orders while the US market is open</b><span>When off, orders sent outside trading hours wait and fill at the next open, at whatever price the market opens at.</span></span></label>
+      <div><h2 style="font-size:14px;margin:6px 0">Always on</h2><ul class="locked">${C.FIXED_RULES.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>
+      <div class="row"><button class="btn primary" id="save-rules">Save rules</button><button class="btn danger" id="reset-rules" data-armed="0">Restore example rules</button></div>
+    </section>`;
+}
+
+function logView() {
+  if (!S.log.length) return `<section class="panel"><h2>Log</h2><p class="empty">Each run is recorded here with the agent's reasoning, every proposal, and what was sent. Nothing yet.</p></section>`;
+  const runs = S.log.map((r, idx) => {
+    const sent = r.proposals.filter((p) => p.status === "filled" || p.status === "sent").length;
+    const blocked = r.proposals.filter((p) => p.status === "blocked").length;
+    return `<details class="run" ${idx === 0 ? "open" : ""}><summary><span class="when">${esc(fmtWhen(r.startedAt, true))}</span>
+      <span class="meta">${r.mode === "demo" ? "Demo" : "Paper"} · ${r.agent === "claude" ? esc(r.model) : "scripted"} · ${r.proposals.length} proposed, ${sent} sent${blocked ? `, ${blocked} blocked` : ""}${r.error ? " · stopped with an error" : ""}</span></summary>
+      ${r.error ? `<div class="banner err"><b>Error.</b><span>${esc(r.error)}</span></div>` : ""}
+      ${r.summary ? `<p class="summary-text" style="margin-top:0">${esc(r.summary)}</p>` : ""}
+      ${r.proposals.length ? `<div class="props">${r.proposals.map((p) => proposalCard(p, false)).join("")}</div>` : ""}
+      <details class="checks" style="margin-top:10px"><summary>${r.steps.length} steps${r.usage && r.usage.input ? ` · ${(r.usage.input + r.usage.output).toLocaleString()} tokens` : ""}</summary>
+      <ol class="steps">${r.steps.map((s) => `<li class="${esc(s.kind)}">${esc(s.text)}</li>`).join("")}</ol></details></details>`;
+  }).join("");
+  return `<section class="sec"><div class="row" style="justify-content:space-between"><h2 style="margin:0">Log</h2>
+    <div class="row"><button class="btn" id="export-log">Export log</button><button class="btn danger" id="clear-log" data-armed="0">Clear log</button></div></div>
+    <p class="sub">Stored on this device only. The latest ${S.log.length} run${S.log.length === 1 ? "" : "s"}, newest first.</p>
+    <div class="runs">${runs}</div></section>`;
+}
+
+function settingsView() {
+  const st = S.settings;
+  const f = (id, label, type, help, extra = "") => `<div class="field"><label for="${id}">${label}</label>
+    <input type="${type}" id="${id}" value="${esc(st[id])}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" ${extra}>${help ? `<div class="help">${help}</div>` : ""}</div>`;
+  const conn = S.conn ? `<ul class="conn" aria-live="polite">${S.conn.map((c) => `<li><span class="${c.ok ? "ok" : "bad"}">${c.ok ? "✓" : "✕"}</span><span><b>${esc(c.label)}.</b> ${esc(c.detail)}</span></li>`).join("")}
+    ${S.checking ? `<li><span class="spin" aria-hidden="true"></span><span>Checking…</span></li>` : ""}</ul>` : "";
+  return `<section class="panel sec" aria-labelledby="h-alp"><h2 id="h-alp">Alpaca paper account</h2>
+      <p class="sub">Create a free Alpaca account, open the paper-trading account, and generate an API key pair there. This app only talks to Alpaca's paper service; live keys won't work.</p>
+      <div class="grid2">${f("keyId", "Key ID", "text", "")}${f("secret", "Secret key", "password", "")}</div></section>
+    <section class="panel sec" aria-labelledby="h-cl"><h2 id="h-cl">Claude</h2>
+      <p class="sub">Create an API key at console.anthropic.com. API use is billed separately from a Claude subscription; the Log shows the tokens each run used.</p>
+      <div class="grid2">${f("anthropicKey", "API key", "password", "")}${f("model", "Model", "text", "The default is Claude Sonnet 5.5.")}</div></section>
+    <section class="panel sec" aria-labelledby="h-ord"><h2 id="h-ord">How orders go out</h2>
+      <label class="check" for="askBeforeSend"><input type="checkbox" id="askBeforeSend" ${st.askBeforeSend ? "checked" : ""}>
+        <span><b>Ask me before sending orders</b><span>Recommended. When off, orders that pass every limit are sent as soon as the run ends.</span></span></label>
+      <label class="check" for="demo"><input type="checkbox" id="demo" ${st.demo ? "checked" : ""}>
+        <span><b>Use demo data</b><span>Simulated prices and fills on this device, even with keys entered. Claude still runs if a key is set.</span></span></label>
+      ${f("relay", "Relay address (only if needed)", "url", "Leave blank. Fill in only if the connection check says this browser can't reach Alpaca's market-data service; the setup notes explain the relay.", 'inputmode="url" placeholder="https://…"')}
+    </section>
+    <section class="panel sec" aria-labelledby="h-save"><h2 id="h-save">Save and check</h2>
+      <p class="sub">Keys are kept in this browser on this device only and are never sent to Claude. On iPad, open this page in Safari, tap Share, then Add to Home Screen; it then opens like an app and keeps these settings.</p>
+      <div class="row"><button class="btn primary" id="save-settings">Save settings</button><button class="btn" id="check" ${S.checking ? "disabled" : ""}>Check connections</button>
+      <button class="btn danger" id="forget" data-armed="0">Forget keys on this device</button></div>${conn}</section>`;
+}
+
+let freshForm = false; // set when saved values should replace whatever is typed in the form
+function render() {
+  const focusId = document.activeElement && document.activeElement.id;
+  let view = "";
+  if (S.view === "desk") view = deskView();
+  else if (S.view === "rules") view = rulesView();
+  else if (S.view === "log") view = logView();
+  else view = settingsView();
+  // Keep unsaved form edits when the page re-renders around them (status updates, connection checks).
+  const draft = {};
+  if (!freshForm && (S.view === "rules" || S.view === "settings")) {
+    $app.querySelectorAll("main input, main textarea").forEach((el) => { if (el.id) draft[el.id] = el.type === "checkbox" ? el.checked : el.value; });
+  }
+  freshForm = false;
+  const openLog = [...$app.querySelectorAll("details.run")].map((d) => d.open);
+  const scrollTop = window.scrollY;
+  $app.innerHTML = header() + `<main class="wrap" id="main">${view}</main>`;
+  for (const [id, v] of Object.entries(draft)) { const el = document.getElementById(id); if (el) { if (el.type === "checkbox") el.checked = v; else el.value = v; } }
+  if (S.view === "log" && openLog.length) $app.querySelectorAll("details.run").forEach((d, i) => { if (i < openLog.length) d.open = openLog[i]; });
+  if (focusId) { const el = document.getElementById(focusId); if (el && el.focus) el.focus({ preventScroll: true }); }
+  if (window.scrollY !== scrollTop) window.scrollTo(0, scrollTop);
+}
+
+/* ---------- actions ---------- */
+function armed(btn, label, fn) {
+  if (btn.dataset.armed === "1") { fn(); return; }
+  btn.dataset.armed = "1"; const prev = btn.textContent; btn.textContent = label; btn.classList.add("armed");
+  setTimeout(() => { if (btn.isConnected) { btn.dataset.armed = "0"; btn.textContent = prev; btn.classList.remove("armed"); } }, 4000);
+}
+function readNumber(id, info) {
+  const v = Number(document.getElementById(id).value);
+  if (!Number.isFinite(v) || v < info.min || v > info.max) throw new Error(`${info.label} (${info.unit}) must be between ${info.min} and ${info.max}.`);
+  return v;
+}
+
+$app.addEventListener("click", (ev) => {
+  const t = ev.target.closest("button, a[data-view]");
+  if (!t) return;
+  if (t.dataset.view) { ev.preventDefault(); S.view = t.dataset.view; S.conn = S.view === "settings" ? S.conn : null;
+    try { history.replaceState(null, "", "#" + S.view); } catch (e) { /* ignore */ } render(); window.scrollTo(0, 0); return; }
+  switch (t.id) {
+    case "kill":
+      S.settings.tradingEnabled = !S.settings.tradingEnabled; save(KEY.settings, S.settings);
+      toast(S.settings.tradingEnabled ? "Trading on" : "Trading paused. Every order will be blocked."); render(); return;
+    case "run": runAgent(); return;
+    case "send": sendNow(); return;
+    case "approve-all": S.run.proposals.forEach((p) => { if (p.status === "queued") p.status = "approved"; }); persistRun(S.run); render(); return;
+    case "save-rules": {
+      try {
+        const universe = document.getElementById("universe").value.toUpperCase().split(/[\s,]+/).filter(Boolean);
+        const bad = universe.filter((s) => !/^[A-Z][A-Z.]{0,9}$/.test(s));
+        if (!universe.length) throw new Error("Add at least one fund.");
+        if (bad.length) throw new Error(`These don't look like tickers: ${bad.join(", ")}`);
+        const benchmark = document.getElementById("benchmark").value.trim().toUpperCase();
+        if (!/^[A-Z][A-Z.]{0,9}$/.test(benchmark)) throw new Error("The benchmark should be one ticker, for example SPY.");
+        const limits = {};
+        for (const info of C.LIMIT_INFO) limits[info.key] = readNumber("lim-" + info.key, info);
+        limits.requireMarketOpen = document.getElementById("lim-requireMarketOpen").checked;
+        const strategy = document.getElementById("strategy").value.trim();
+        if (strategy.length < 20) throw new Error("Write out the strategy before saving.");
+        S.rules = { strategy, universe: [...new Set(universe)], benchmark, limits };
+        save(KEY.rules, S.rules); toast("Rules saved"); S.perf = null; refresh();
+      } catch (e) { toast(e.message); }
+      return;
+    }
+    case "reset-rules": armed(t, "Tap again to restore", () => { S.rules = clone(C.DEFAULT_RULES); save(KEY.rules, S.rules); toast("Example rules restored"); freshForm = true; render(); }); return;
+    case "save-settings": case "check": {
+      const st = S.settings;
+      for (const k of ["keyId", "secret", "anthropicKey", "model", "relay"]) st[k] = document.getElementById(k).value.trim();
+      st.askBeforeSend = document.getElementById("askBeforeSend").checked;
+      st.demo = document.getElementById("demo").checked;
+      if (!st.model) st.model = DEFAULT_SETTINGS.model;
+      if (st.relay && !/^https:\/\//.test(st.relay)) { toast("The relay address must start with https://"); return; }
+      if (!save(KEY.settings, st)) toast("This browser blocked saving. Settings last until the page closes.");
+      else if (t.id === "save-settings") toast("Settings saved");
+      S.snap = null; S.perf = null; S.run = null; refresh();
+      if (t.id === "check") checkConnections();
+      return;
+    }
+    case "forget": armed(t, "Tap again to forget keys", () => {
+      Object.assign(S.settings, { keyId: "", secret: "", anthropicKey: "" }); save(KEY.settings, S.settings);
+      S.conn = null; S.snap = null; S.perf = null; S.run = null; toast("Keys removed from this device"); freshForm = true; refresh(); }); return;
+    case "export-log": {
+      try {
+        const blob = new Blob([JSON.stringify(S.log, null, 2)], { type: "application/json" });
+        const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `trading-desk-log-${C.nyDate()}.json`;
+        document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      } catch (e) { toast("This browser couldn't export the file"); }
+      return;
+    }
+    case "clear-log": armed(t, "Tap again to clear", () => { S.log = []; persistLog(); toast("Log cleared"); render(); }); return;
+  }
+  if (t.dataset.approve || t.dataset.reject) {
+    const id = Number(t.dataset.approve || t.dataset.reject);
+    const p = S.run && S.run.proposals.find((x) => x.id === id);
+    if (!p) return;
+    const want = t.dataset.approve ? "approved" : "rejected";
+    p.status = p.status === want ? "queued" : want;
+    persistRun(S.run); render();
+  }
+});
+let resizeTimer = null, lastNarrow = window.innerWidth < 560;
+window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => {
+  const n = window.innerWidth < 560; if (n !== lastNarrow && S.view === "desk") { lastNarrow = n; render(); } }, 150); });
+window.addEventListener("hashchange", () => { const v = location.hash.slice(1); if (["desk", "rules", "log", "settings"].includes(v) && v !== S.view) { S.view = v; render(); } });
+
+render();
+refresh();
+})();
+</script>
+</body>
+</html>
